@@ -49,7 +49,7 @@ public class FilmController {
         } else {
             log.error(String.format("Film with id `%d` not found.", film.getId()));
             throw new NotFoundException(String.format("Film with id `%d` not found.", film.getId()));
-        } 
+        }
         return ResponseEntity.ok(film);
     }
 
