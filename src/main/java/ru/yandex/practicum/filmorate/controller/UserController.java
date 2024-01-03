@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> getUsers() {
-        log.info("current number of users in the program");
+        log.info("all users in the program");
         return ResponseEntity.ok().body(new ArrayList<>(users.values()));
     }
 
@@ -45,6 +45,7 @@ public class UserController {
             log.info("ussr has been updated{}", user);
             users.put(user.getId(), user);
         } else {
+            log.error(String.format("user with id `%d` not found", user.getId()));
             throw new NotFoundException(String.format("user with id `%d` not found", user.getId()));
         }
         return ResponseEntity.ok().body(user);

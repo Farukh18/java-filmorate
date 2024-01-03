@@ -28,7 +28,7 @@ public class FilmController {
 
     @GetMapping
     public ResponseEntity<List<Film>> getFilms() {
-        log.info("current number of films in the program");
+        log.info("all films in the program");
         return ResponseEntity.ok().body(new ArrayList<>(films.values()));
     }
 
@@ -41,13 +41,13 @@ public class FilmController {
         return ResponseEntity.ok(film);
     }
 
-
     @PutMapping
     public ResponseEntity<Film> updateFilm(@Valid @RequestBody Film film) {
         if (films.containsKey(film.getId())) {
             log.info("film is updated: {} ", film);
             films.put(film.getId(), film);
         } else {
+            log.error(String.format("Film with id `%d` not found.", film.getId()));
             throw new NotFoundException(String.format("Film with id `%d` not found.", film.getId()));
         }
         return ResponseEntity.ok(film);

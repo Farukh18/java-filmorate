@@ -15,17 +15,13 @@ import static ru.yandex.practicum.filmorate.constant.UserConstant.REGEX_LOGIN;
 @Data
 @Builder
 public class User {
-    Integer id;
-
-    String name;
-
+    private  Integer id;
+    private  String name;
     @Email(regexp = REGEX_EMAIL, message = "non standard writing of mail")
-    String email;
-
-    @NotEmpty
+    private  String email;
+    @NotEmpty(message = "login musnt't be empty")
     @Pattern(regexp = REGEX_LOGIN, message = "login mustn't be empty")
-    String login;
-
+    private  String login;
     @Past(message = "birth day musnt be in the future")
-    LocalDate birthday;
+    private  LocalDate birthday;
 }

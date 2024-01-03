@@ -12,15 +12,12 @@ import java.time.LocalDate;
 @Data
 @Builder
 public class Film {
-    Integer id;
+    private Integer id;
     @NotBlank(message = "string name must not be empty")
-    String name;
-
+    private String name;
     @Size(max = 200, min = 1, message = "description max 200 symbols")
-    String description;
-
-    LocalDate releaseDate;
-
+    private String description;
+    private LocalDate releaseDate;
     @Positive(message = "duration must be positive")
-    Integer duration;
+    private Integer duration;
 }
